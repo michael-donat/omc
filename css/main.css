@@ -1,0 +1,12 @@
+#loot-table td {
+  text-align: center; }
+  #loot-table td:nth-child(1) {
+    width: 8%; }
+    #loot-table td:nth-child(1) img {
+      width: 100%; }
+  #loot-table td:nth-child(2) {
+    width: 10%; }
+  #loot-table td:nth-child(6) {
+    width: 10%; }
+  #loot-table td:nth-child(5) {
+    width: 10%; }
