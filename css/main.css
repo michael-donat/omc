@@ -1,3 +1,5 @@
+#loot-table tbody > tr > td {
+  vertical-align: middle; }
 #loot-table td {
   text-align: center; }
   #loot-table td:nth-child(1) {

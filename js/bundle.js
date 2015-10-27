@@ -358,7 +358,7 @@ var LootItem = (function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      var className = this.props.tick ? 'success' : null;
+      var className = null;
 
       return _react2['default'].createElement(
         'tr',
@@ -386,13 +386,17 @@ var LootItem = (function (_React$Component) {
         _react2['default'].createElement(
           'td',
           null,
-          _react2['default'].createElement(
-            'span',
-            null,
-            (function () {
-              return _this.props.tick ? 'GOT IT' : 'STILL MISSING';
-            })()
-          )
+          (function () {
+            return _this.props.tick ? _react2['default'].createElement(
+              'span',
+              { className: 'label label-success' },
+              'GOT IT'
+            ) : _react2['default'].createElement(
+              'span',
+              { className: 'label label-info' },
+              'MISSING'
+            );
+          })()
         )
       );
     }
