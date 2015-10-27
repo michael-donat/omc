@@ -11,7 +11,7 @@ class LootItem extends React.Component {
 
   render() {
 
-    let className = this.props.tick ? 'success' : null;
+    let className = null;
 
     return (
       <tr className={className} onClick={this.toggle.bind(this)}>
@@ -20,11 +20,9 @@ class LootItem extends React.Component {
         <td>{this.props.item.description}</td>
         <td>{this.props.item.type}</td>
         <td>
-          <span>
           {(() => {
-            return this.props.tick ? 'GOT IT' : 'STILL MISSING'
+            return this.props.tick ? <span className="label label-success">GOT IT</span> : <span className="label label-info">MISSING</span>
           })()}
-          </span>
         </td>
       </tr>
     )

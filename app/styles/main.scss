@@ -1,4 +1,7 @@
 #loot-table {
+  tbody>tr>td {
+    vertical-align: middle;
+  }
   td {
     text-align: center;
     &:nth-child(1) {
