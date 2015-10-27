@@ -12,19 +12,30 @@ var watchify = require('watchify');
 var assign = require('object-assign');
 var sass = require('gulp-ruby-sass');
 
-const dir = {
+const dist = {
   js: 'dist/js',
   html: 'dist',
   css: 'dist/css'
+  prefix: 'omc'
 }
 
-gulp.task('gh', function() {
-  gulp.run('css')
-  gulp.run('js')
+const dev = {
+  js: 'dev/js',
+  html: 'dev',
+  css: 'dev/css'
+}
+
+var target = dev;
+
+gulp.task('gh', ['env.dist', 'css', 'js'], function() {
   gulp.run('html:gh')
 })
 
 gulp.task('watch', ['watch.js', 'watch.css', 'watch.html'])
+
+gulp.task('env.dist', function() {
+  target = dist;
+})
 
 gulp.task('watch.js', function() {
   var w = watchify(b)
@@ -39,7 +50,7 @@ gulp.task('watch.css', function() {
 
 gulp.task('css', function() {
   return sass('app/styles/*.scss')
-    .pipe(gulp.dest(dir.css))
+    .pipe(gulp.dest(target.css))
 });
 
 gulp.task('watch.html', function() {
@@ -50,16 +61,16 @@ gulp.task('html:gh', function() {
   var target = gulp.src('./app/index.html');
   var sources = gulp.src(['./dist/js/*.js', './dist/css/*.css'], {read: false});
 
-  return target.pipe(inject(sources, {ignorePath: 'dist', addPrefix: 'omc'}))
-    .pipe(gulp.dest(dir.html));
+  return target.pipe(inject(sources, {ignorePath: 'dist', addPrefix: target.prefix}))
+    .pipe(gulp.dest(dist.html));
 })
 
 gulp.task('html', function() {
   var target = gulp.src('./app/index.html');
-  var sources = gulp.src(['./dist/js/*.js', './dist/css/*.css'], {read: false});
+  var sources = gulp.src(['./'+target.js+'/*.js', './'+target.css+'/*.css'], {read: false});
 
   return target.pipe(inject(sources, {relative: true}))
-    .pipe(gulp.dest(dir.html));
+    .pipe(gulp.dest(target.html));
 })
 
 var b = browserify(assign({}, watchify.args, {
@@ -80,5 +91,5 @@ function bundleJS(b) {
     .pipe(sourcemaps.init({loadMaps: true}))
     .on('error', gutil.log)
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(dir.js));
+    .pipe(gulp.dest(target.js));
 }
