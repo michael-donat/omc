@@ -17,11 +17,13 @@ class Application extends React.Component {
 }
 
 import LootSection from './section/loot'
+import RosterSection from './section/roster'
 
 render((
   <Router>
     <Route path="/" component={Application}>
       <Route path="loot" component={LootSection}/>
+      <Route path="roster" component={RosterSection}/>
     </Route>
   </Router>
 ), document.querySelector('#content'))

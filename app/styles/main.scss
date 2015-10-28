@@ -21,3 +21,21 @@
     }
   }
 }
+
+#roster-table {
+  th {
+    text-align: center;
+  }
+  tbody>tr>td {
+    vertical-align: middle;
+  }
+  td {
+    text-align: center;
+    &:nth-child(1) {
+      width: 4%;
+      img {
+        width: 40px;
+      }
+    }
+  }
+}

@@ -1,15 +1,21 @@
 var express = require('express');
 var app = express();
 
-app.use(express.static('dist'));
+app.use(express.static('dev'));
 
-app.get('/api/1.0/loot', function(req, res) {
-  re.json({ok: 1})
+var Roster = require('./model/roster')
+var roster = new Roster(require('../cache/members.json'))
+
+app.get('/api/1.0/roster', function(req, res) {
+  res.json(roster.all())
 })
 
-var server = app.listen(3000, function () {
+var server = app.listen(3001, function () {
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
+  roster.start()
+
+  console.log('Listening at http://%s:%s', host, port);
+  console.log('Roster polling started.')
 });

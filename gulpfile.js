@@ -68,7 +68,7 @@ gulp.task('html:gh', function() {
 gulp.task('html', function() {
   var target = gulp.src('./app/index.html');
   var sources = gulp.src(['./'+targetDir.js+'/*.js', './'+targetDir.css+'/*.css'], {read: false});
-  return target.pipe(inject(sources, {relative: true}))
+  return target.pipe(inject(sources, {ignorePath: 'dev'}))
     .pipe(gulp.dest(targetDir.html));
 })
 
