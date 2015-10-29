@@ -40,7 +40,7 @@ Dispatcher.register(function(event) {
 const service = {
   roster: {},
   refresh: function(callback) {
-    jQuery.ajax('/api/1.0/roster', {
+    jQuery.ajax('https://radiant-oasis-5376.herokuapp.com/api/1.0/roster', {
       success: function(data) {
         service.roster = data
         store.emitChange()

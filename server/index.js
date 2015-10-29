@@ -8,7 +8,7 @@ var Roster = require('./model/roster')
 var roster = new Roster(require('./data/members.json'))
 
 app.get('/api/1.0/roster', cors({
-  origin: 'http://github.io'
+  origin: ['http://github.io', 'http://127.0.0.1:3001']
 }), function(req, res) {
   res.json(roster.all())
 })
