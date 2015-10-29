@@ -4,13 +4,13 @@ var app = express();
 app.use(express.static('dev'));
 
 var Roster = require('./model/roster')
-var roster = new Roster(require('../cache/members.json'))
+var roster = new Roster(require('./data/members.json'))
 
 app.get('/api/1.0/roster', function(req, res) {
   res.json(roster.all())
 })
 
-var server = app.listen(3001, function () {
+var server = app.listen(process.env.PORT || 3001, function () {
   var host = server.address().address;
   var port = server.address().port;
 

@@ -8,7 +8,7 @@ var _ = require('lodash')
 var statusUri = 'https://www.bungie.net/Platform/Destiny/%s/Account/%s/Summary/?definitions=False'
 var activityUri = 'http://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/%s/%s/%s?mode=None&count=1'
 
-var activities = require('../../cache/activities.json')
+var activities = require('../data/activities.json')
 
 var requestOptions = {
   json: true,
