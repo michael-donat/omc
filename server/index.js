@@ -1,12 +1,15 @@
 var express = require('express');
 var app = express();
+var cors = require('cors');
 
 app.use(express.static('dev'));
 
 var Roster = require('./model/roster')
 var roster = new Roster(require('./data/members.json'))
 
-app.get('/api/1.0/roster', function(req, res) {
+app.get('/api/1.0/roster', cors({
+  origin: 'http://github.io'
+}), function(req, res) {
   res.json(roster.all())
 })
 
