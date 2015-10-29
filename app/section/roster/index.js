@@ -103,6 +103,7 @@ class RosterSection extends React.Component {
   componentDidMount() {
     store.addChangeListener(this.update.bind(this))
     actions.refresh()
+    setInterval(actions.refresh, 1000 * 60 * 2)
   }
 
   componentWillUnmount() {
