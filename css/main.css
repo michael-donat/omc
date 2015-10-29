@@ -12,3 +12,14 @@
     width: 10%; }
   #loot-table td:nth-child(5) {
     width: 10%; }
+
+#roster-table th {
+  text-align: center; }
+#roster-table tbody > tr > td {
+  vertical-align: middle; }
+#roster-table td {
+  text-align: center; }
+  #roster-table td:nth-child(1) {
+    width: 4%; }
+    #roster-table td:nth-child(1) img {
+      width: 40px; }
