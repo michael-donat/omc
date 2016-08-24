@@ -4,6 +4,7 @@ var unzip = require('unzip')
 
 var url = 'http://www.bungie.net/platform/Destiny/Manifest/'
 var url = 'http://www.bungie.net/common/destiny_content/sqlite/en/world_sql_content_a27a2e756050352e5ceb16d7ffffd41d.content'
+var url = 'http://www.bungie.net/common/destiny_content/sqlite/en/world_sql_content_c421e4513796a83b609b28a4e435e680.content'
 
 var options = {
     uri: url

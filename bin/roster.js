@@ -35,6 +35,9 @@ function roster(clan) {
     console.log('Sending: ', options.uri+page )
     return rp(options).then(function(response) {
       response.Response.results.forEach(function(user) {
+        if (!user.bungieNetUserInfo) {
+          return;
+        }
         users.push({
           name: user.bungieNetUserInfo.displayName,
           membership: {
